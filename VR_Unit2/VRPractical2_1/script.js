@@ -12,10 +12,24 @@ window.addEventListener("DOMContentLoaded",function() {
     let z = rnd(-20,20);
     createTree(x,0,z);
   }
-   //Task 2: Use the createCloud(...)  to add several clouds to the scene at various positions.
+  
+  //Task 2: Use the createCloud(...)  to add several clouds to the scene at various positions.
+})
+  createCloud(0,10,-10);
+  createCloud(5,10,-10);
+  createCloud(10,10,-10);
+  createCloud(0,5,-3);
+  createCloud(5,5,-6);
+  createCloud(10,5,-10);
+  createCloud(5,10,5);
+  createCloud(5,10,10);
+
+
 
    //Task 4: Use the createHouse(...)  to add several houses to the scene at various positions.
-})
+    createHouse(-10,0,-10);
+    createHouse(-5,0,-15);
+    createHouse(0,0,-10);
 
 /* Task 1: Create a function createCloud that,
       1) Accept an x, y and z position for where to place the cloud "entity"
@@ -25,6 +39,30 @@ window.addEventListener("DOMContentLoaded",function() {
       5) Set cloud entities position to those passed in to the function.
       6) Add the cloud entity to the scene
 */
+      function createCloud(x, y, z){
+        let cloud = document.createElement("a-entity");
+        
+        let puff1 = document.createElement("a-sphere");
+        puff1.setAttribute("color","white");
+        puff1.setAttribute("position","0 0 0");
+        puff1.setAttribute("radius","1.5");
+        cloud.append( puff1 );
+
+        let puff2 = document.createElement("a-sphere");
+        puff2.setAttribute("color","white");
+        puff2.setAttribute("position","1.5 0.5 0");
+        puff2.setAttribute("radius","1.5");
+        cloud.append( puff2 );
+
+        let puff3 = document.createElement("a-sphere");
+        puff3.setAttribute("color","white");
+        puff3.setAttribute("position","-1.5 0.5 0");
+        puff3.setAttribute("radius","1.5");
+        cloud.append( puff3 );
+
+        cloud.setAttribute("position",{x:x, y:y, z:z});
+        scene.append( cloud )
+      }
 
 /* Task 3: Create a function createHouse that,
       1) Accept an x and z position for where to place the house "entity"
@@ -35,24 +73,50 @@ window.addEventListener("DOMContentLoaded",function() {
       5) Set house entities position to those passed in to the function.
       6) Add the house entity to the scene
 */
-function createTree(x, y, z){
-  let tree = document.createElement("a-entity");
+  function createTree(x, y, z){
+    let tree = document.createElement("a-entity");
+    
+    let pines = document.createElement("a-cone");
+    pines.setAttribute("color","green");
+    pines.setAttribute("position","0 2 0");
+    pines.setAttribute("height","2");
+    tree.append( pines );
+
+    let stump = document.createElement("a-cylinder");
+    stump.setAttribute("position","0 1 0");
+    stump.setAttribute("color","brown");
+    stump.setAttribute("radius","0.25");
+    tree.append( stump );
+
+    tree.setAttribute("position",{x:x, y:y, z:z});
+    scene.append( tree )
+  }
+
+  function createHouse(x,z){
+    let house = document.createElement("a-entity");
+    
+    let base = document.createElement("a-box");
+    base.setAttribute("color","yellow");
+    base.setAttribute("position","0 0.5 0");
+    base.setAttribute("depth","2");
+    base.setAttribute("height","1");
+    base.setAttribute("width","2");
+    house.append( base );
+
+    let roof = document.createElement("a-cylinder");
+    roof.setAttribute("color","red");
+    roof.setAttribute("position","0 1.5 0");
+    roof.setAttribute("radius","1.5");
+    roof.setAttribute("height","1");
+    roof.setAttribute("rotation","0 0 90");
+    roof.setAttribute("segments-radial","3");
+    house.append( roof );
+
+    house.setAttribute("position",{x:x, y:0, z:z});
+    scene.append( house )
+  }
+
   
-  let pines = document.createElement("a-cone");
-  pines.setAttribute("color","green");
-  pines.setAttribute("position","0 2 0");
-  pines.setAttribute("height","2");
-  tree.append( pines );
-
-  let stump = document.createElement("a-cylinder");
-  stump.setAttribute("position","0 1 0");
-  stump.setAttribute("color","brown");
-  stump.setAttribute("radius","0.25");
-  tree.append( stump );
-
-  tree.setAttribute("position",{x:x, y:y, z:z});
-  scene.append( tree )
-}
 
 
 
