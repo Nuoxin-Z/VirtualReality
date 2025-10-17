@@ -18,11 +18,11 @@ window.addEventListener("DOMContentLoaded",function() {
   createCloud(0,10,-10);
   createCloud(5,10,-10);
   createCloud(10,10,-10);
-  createCloud(0,5,-3);
-  createCloud(5,5,-6);
-  createCloud(10,5,-10);
-  createCloud(5,10,5);
-  createCloud(5,10,10);
+  createCloud(0,12,-3);
+  createCloud(11,-15);
+  createCloud(10,13,-10);
+  createCloud(5,9,5);
+  createCloud(5,9,10);
 
 
 
@@ -30,6 +30,11 @@ window.addEventListener("DOMContentLoaded",function() {
     createHouse(-10,0,-10);
     createHouse(-5,0,-15);
     createHouse(0,0,-10);
+
+    createHouseBlueRoof(10, -5); 
+    createHouseBlueRoof(15, -12);
+    createHouseBlueRoof(5, 0);
+
 
 /* Task 1: Create a function createCloud that,
       1) Accept an x, y and z position for where to place the cloud "entity"
@@ -115,8 +120,4 @@ window.addEventListener("DOMContentLoaded",function() {
     house.setAttribute("position",{x:x, y:0, z:z});
     scene.append( house )
   }
-
-  
-
-
 
