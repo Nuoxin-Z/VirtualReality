@@ -108,7 +108,7 @@ window.addEventListener("DOMContentLoaded",function() {
     base.setAttribute("width","2");
     house.append( base );
 
-    let roof = document.createElement("a-cylinder");
+    let roof = document.createElement("a-tetrahedron");
     roof.setAttribute("color","red");
     roof.setAttribute("position","0 1.5 0");
     roof.setAttribute("radius","1.5");
