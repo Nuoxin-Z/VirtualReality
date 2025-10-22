@@ -21,10 +21,9 @@ function loop(){
 
     //Make the dude “grow”
     dude = document.querySelector("#dude");
-    dude.setAttribute("scale",{z:dude}.getAttribute("position").y+=0.1, x:0,z:0});
+    dude.setAttribute("scale",{x:dude.getAttribute("scale").x+=0.01, y:dude.getAttribute("scale").y+=0.01,z:dude.getAttribute("scale").z+=0.01});
 
     //Make the sun fade in
 
     window.requestAnimationFrame(loop);
-
 }
