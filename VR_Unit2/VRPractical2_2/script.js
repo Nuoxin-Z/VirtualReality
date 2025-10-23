@@ -22,8 +22,12 @@ function loop(){
     //Make the dude “grow”
     dude = document.querySelector("#dude");
     dude.setAttribute("scale",{x:dude.getAttribute("scale").x+=0.01, y:dude.getAttribute("scale").y+=0.01,z:dude.getAttribute("scale").z+=0.01});
+    dude.setAttribute("position",{y:dude.getAttribute("position").y+=0.01, x:-2,z:-10});
 
     //Make the sun fade in
+    sun = document.querySelector("#sun");
+    sun.setAttribute("scale",{x:sun.getAttribute("scale").x-=0.005, y:sun.getAttribute("scale").y-=0.005,z:sun.getAttribute("scale").z-=0.005});
+    sun.setAttribute("position",{y:sun.getAttribute("position").y+=0.01, x:-2,z:-10});
 
     window.requestAnimationFrame(loop);
 }
