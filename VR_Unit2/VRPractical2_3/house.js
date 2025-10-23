@@ -1,27 +1,28 @@
 class House{
   constructor(x,y,z){
-    let housecument.createElement("a-entity");
-    this.house=this.house;
+    let house=document.createElement("a-entity");
+    this.house= house;
   
-    let puff1 = document.createElement("a-sphere");
-    puff1.setAttribute("color","white");
-    puff1.setAttribute("position","0 0 0");
-    puff1.setAttribute("radius","1.5");
-    cloud.append( puff1 );
+    let roof = document.createElement("a-cylinder");
+    roof.setAttribute("color",`rgb(${rnd(0,255)},${rnd(0,255)},${rnd(0,255)})`);
+    roof.setAttribute("position","0 2.5 0");
+    roof.setAttribute("radius","1.5");
+    roof.setAttribute("height","1.5");
+    roof.setAttribute("rotation","-90 0 0");
+    roof.setAttribute("segments-radial","3");
+    house.append( roof );
 
-    let puff2 = document.createElement("a-sphere");
-    puff2.setAttribute("color","white");
-    puff2.setAttribute("position","1.5 0.5 0");
-    puff2.setAttribute("radius","1.5");
-    cloud.append( puff2 );
+    let base = document.createElement("a-box");
+    base.setAttribute("color","white");
+    base.setAttribute("position","0 1 0");
+    base.setAttribute("depth","1.5");
+    base.setAttribute("height","1.5");
+    base.setAttribute("width","1.5");
+    house.append( base );
 
-    let puff3 = document.createElement("a-sphere");
-    puff3.setAttribute("color","white");
-    puff3.setAttribute("position","-1.5 0.5 0");
-    puff3.setAttribute("radius","1.5");
-    cloud.append( puff3 );
 
-    cloud.setAttribute("position",{x:x, y:y, z:z});
-    scene.append( cloud )
+
+    house.setAttribute("position",{x:x, y:y, z:z});
+    scene.append( house )
     }
 }
