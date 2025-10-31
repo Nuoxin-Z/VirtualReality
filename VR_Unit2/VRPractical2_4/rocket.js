@@ -1,59 +1,81 @@
-class rocket{
-  constructor(x,y,z){
-    this.obj = document.createElement("a-entity");
+class Rocket{
+    constructor(x,y,z){
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.a = y;
+        this.da = 0.15;
 
-    let head = document.createElement("a-cone");
-    head.setAttribute("color","blue");
-    head.setAttribute("position","0 0 -2");
-    head.setAttribute("height","1");
-    head.setAttribute("radius-top","0");
-    head.setAttribute("radius-bottom","0.5");
-    this.obj.appendChild( head );
-  
-    let body = document.createElement("a-cylinder");
-    body.setAttribute("position","0 -1.5 -2");
-    body.setAttribute("color","red");
-    body.setAttribute("radius","0.5");
-    body.setAttribute("height","2");
-    this.obj.appendChild( body );
+        this.obj = document.createElement("a-entity");
+        let head = document.createElement("a-cone");
+        head.setAttribute("radius-top","0");
+        head.setAttribute("radius-bottom", "0.5");
+        head.setAttribute("height", "1");
+        head.setAttribute("color", "red");
+        head.setAttribute("position", "0 0 -2");
+        this.obj.append(head);
+       
+        let body = document.createElement("a-cylinder");
+        body.setAttribute("radius","0.5");
+        body.setAttribute("height","2.5");
+        body.setAttribute("color","blue");
+        body.setAttribute("position","0 -1.75 -2");
+        this.obj.append(body);
 
-    let bottom = document.createElement("a-cone");
-    bottom.setAttribute("color","orange");
-    bottom.setAttribute("position","0 -3.5 -2");
-    bottom.setAttribute("height","2");
-    bottom.setAttribute("radius-top","0");
-    bottom.setAttribute("radius-bottom","0.25");
-    bottom.setAttribute("rotation","-180 0 0");
-    this.obj.appendChild( bottom );
-  
+        let body2 = document.createElement("a-cylinder");
+        body2.setAttribute("radius","0.25");
+        body2.setAttribute("height","2");
+        body2.setAttribute("color","gold");
+        body2.setAttribute("position","-0.7 -1.7 -2");
+        this.obj.append(body2); 
+       
+        let body3 = document.createElement("a-cylinder");
+        body3.setAttribute("radius","0.25");
+        body3.setAttribute("height","2");
+        body3.setAttribute("color","lightgray");
+        body3.setAttribute("position","0.7 -1.7 -2");
+        this.obj.append(body3);    
 
 
-  
-    this.obj.setAttribute("position",{x:x, y:y, z:z});
-    scene.append( this.obj )
+        let flare = document.createElement("a-cone");
+        flare.setAttribute("rotation", "180 0 0");
+        flare.setAttribute("radius-bottom", "0.5");
+        flare.setAttribute("radius-top", "0");
+        flare.setAttribute("height", "2");
+        flare.setAttribute("color", "orange");
+        flare.setAttribute("opacity", "0.6");
+        flare.setAttribute("position", "0 -3.95 -2");
+        this.obj.append(flare);
 
-    this.x = x;
-    this.y = y;
-    this.z = z;
-    this.obj.setAttribute("position",{x:this.x, y:this.y, z:this.z});
+        let flare2 = document.createElement("a-cone");
+        flare2.setAttribute("rotation", "180 0 0");
+        flare2.setAttribute("radius-bottom", "0.23");
+        flare2.setAttribute("radius-top", "0");
+        flare2.setAttribute("height", "1.2");
+        flare2.setAttribute("color", "red");
+        flare2.setAttribute("opacity", "0.6");
+        flare2.setAttribute("position", "-0.7 -3.25 -2");
+        this.obj.append(flare2);
 
-    this.speed = rnd(10,50)/1000;
-    scene.appendChild(this.obj);
-  }
-  
-  launch(){
-    if(this.speed > 0){
-      this.y += this.speed;
-      if (this.y > 10){
-        this.speed = -this.speed;
-        }
-      }else if (this.y < 0){  
-        this.y = this.speed;
-        if(this.y<=0){
-          this.y = 0;
-          this.speed = 0;
-        }
+        let flare3 = document.createElement("a-cone");
+        flare3.setAttribute("rotation", "180 0 0");
+        flare3.setAttribute("radius-bottom", "0.23");
+        flare3.setAttribute("radius-top", "0");
+        flare3.setAttribute("height", "1.2");
+        flare3.setAttribute("color", "orange");
+        flare3.setAttribute("opacity", "0.6");
+        flare3.setAttribute("position", "0.7 -3.25 -2");
+        this.obj.append(flare3);
+   
+        this.obj.setAttribute("position",{x:this.x, y:this.y, z:this.z});
+        scene.append( this.obj )
     }
-      this.obj.setAttribute("position",{x:this.x, y:this.y, z:this.z});
-  }
+
+
+        ascend(){
+            this.a += this.da;
+            this.obj.setAttribute("position", {x:this.x, y:this.a, z:this.z});
+        }
+
+
 }
