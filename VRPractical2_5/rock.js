@@ -5,7 +5,7 @@ class Rock{
     this.z = y;
 
     this.obj = document.createElement("a-dodecahedron");
-    this.obj.setAttribute("color","gray");
+    this.obj.setAttribute("color","red");
     this.obj.setAttribute("radius",0.5);
     this.obj.setAttribute("position",{x:x,y:y,z:z});
     scene.append(this.obj);
