@@ -4,8 +4,8 @@ let scene,car;
 window.addEventListener("DOMContentLoaded",function() {
   scene = document.querySelector("a-scene");
   car = document.getElementById("car");
-  car.x = 5;
-  car.dx = -0.1;
+  car.z = 5;
+  car.dz = -0.1;
   car.move = false;
   car.addEventListener("click",function(){
     car.move = true;
@@ -23,8 +23,8 @@ window.addEventListener("DOMContentLoaded",function() {
 
 function loop(){
   if(car.move){
-    car.x += car.dx;
-    car.setAttribute("position",{x:car.x, y:0.2, z:-2});
+    car.z += car.dz;
+    car.setAttribute("position",{x:-2, y:0.2, z:car.z});
   };
   
   if(rocket.fly){
