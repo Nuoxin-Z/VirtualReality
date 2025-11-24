@@ -35,7 +35,30 @@ window.addEventListener("DOMContentLoaded",function() {
   });
 
   loop();
+
+
+
+  car = document.getElementById("car");
+  car.x = 5;
+  car.dx = -0.1;
+  car.move = false;
+  car.addEventListener("click",function(){
+    car.move = true;
+  });
+
+  rocket = document.getElementById("rocket");
+  rocket.y = 3
+  rocket.dy = 0.03;
+  rocket.addEventListener("click",function(){
+    rocket.fly = true;
+  });
+      
+  loop();
 });
+
+
+
+
 
 function loop(){
   if(carousel.rotate){
@@ -53,5 +76,14 @@ function loop(){
     balloon2.y += balloon2.dy; 
     balloon2.setAttribute("position",{x:-2, y:balloon2.y, z: 0});
   };
+
+
+  if(car.move){
+    car.x += car.dx;
+    car.setAttribute("position",{x:car.x, y:0.2, z:-2});
+  };
+
++
+
   window.requestAnimationFrame( loop );
 };
