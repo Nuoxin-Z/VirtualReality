@@ -2,28 +2,34 @@ let scene,car;
 
 
 window.addEventListener("DOMContentLoaded",function() {
-  scene = document.querySelector("a-scene")
-
+  scene = document.querySelector("a-scene");
   car = document.getElementById("car");
-  car.r = 0;
-  car.dr = 1;
-//Make the car from Practical 1.1 drive when use clicks on the car.
-  car.addEventListener("mouseenter",function(){
-    car.rotate =true;
+  car.x = 5;
+  car.dx = -0.1;
+  car.move = false;
+  car.addEventListener("click",function(){
+    car.move = true;
   });
-  car.addEventListener("mouseleave",function(){
-    car.rotate =false;
+
+  rocket = document.getElementById("rocket");
+  rocket.y = 3
+  rocket.dy = 0.03;
+  rocket.addEventListener("click",function(){
+    rocket.fly = true;
   });
- 
       
   loop();
-})
+});
 
 function loop(){
-  if(car.rotate){
-    car.r += car.dr;
-    car.setAttribute("rotation",{x:car.r, y:0, z:0});
+  if(car.move){
+    car.x += car.dx;
+    car.setAttribute("position",{x:car.x, y:0.2, z:-2});
   };
-    
+  
+  if(rocket.fly){
+    rocket.y += rocket.dy; 
+    rocket.setAttribute("position",{x:-8, y:rocket.y, z: -2});
+  };
   window.requestAnimationFrame(loop);
-}
+};
