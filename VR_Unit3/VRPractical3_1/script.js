@@ -83,7 +83,10 @@ function loop(){
     car.setAttribute("position",{x:-2, y:0.2, z:car.z});
   };
 
-+
+  if(rocket.fly){
+    rocket.y += rocket.dy; 
+    rocket.setAttribute("position",{x:-8, y:rocket.y, z: -2});
+  };
 
   window.requestAnimationFrame( loop );
 };
