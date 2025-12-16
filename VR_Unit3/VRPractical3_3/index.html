@@ -4,11 +4,64 @@
     <script src="bullet.js"></script>
     <script src="script.js"></script>
   </head>
-  <body>
+ <body>
     <a-scene>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="40" height="40" color="#7BC8A4"></a-plane>
+      <!-- Lights -->
+      <a-entity light="type: ambient; intensity: 0.9"></a-entity>
+      <a-entity light="type: directional; intensity: 0.8" position="1 4 2"></a-entity>
+
+      <!-- Ground -->
+      <a-plane
+        position="0 0 0"
+        rotation="-90 0 0"
+        width="80"
+        height="80"
+        color="#7BC8A4">
+      </a-plane>
+
+      <!-- Sky -->
       <a-sky color="#ECECEC"></a-sky>
-      <a-camera position="0 1.6 0"></a-camera>
+
+      <!-- Camera + HUD -->
+      <a-camera id="player" position="0 1.6 0" wasd-controls look-controls>
+
+        <!-- HUD background -->
+        <a-plane
+          position="-0.7 0.45 -1.2"
+          width="1.6"
+          height="0.8"
+          material="color: black; opacity: 0.4">
+        </a-plane>
+
+        <!-- HUD text (IMPORTANT: font specified) -->
+        <a-entity id="hudScore"
+          position="-1.45 0.7 -1.1"
+          text="value: Score: 0; color: white; width: 2.5; font: mozillavr">
+        </a-entity>
+
+        <a-entity id="hudAmmo"
+          position="-1.45 0.52 -1.1"
+          text="value: Ammo: 3; color: white; width: 2.5; font: mozillavr">
+        </a-entity>
+
+        <a-entity id="hudTime"
+          position="-1.45 0.34 -1.1"
+          text="value: Time: 60; color: white; width: 2.5; font: mozillavr">
+        </a-entity>
+
+        <a-entity id="hudEnemies"
+          position="-1.45 0.16 -1.1"
+          text="value: Enemies left: 6; color: white; width: 2.5; font: mozillavr">
+        </a-entity>
+
+        <!-- Crosshair -->
+        <a-entity
+          position="0 0 -1"
+          geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.015"
+          material="color: black">
+        </a-entity>
+
+      </a-camera>
     </a-scene>
   </body>
 </html>
